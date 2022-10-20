@@ -23,7 +23,7 @@
          ,state/1
         ]).
 
--include("enet_types.hrl").
+-include("../include/enet_types.hrl").
 
 %%====================================================================
 %% API

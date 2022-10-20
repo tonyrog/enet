@@ -9,9 +9,9 @@
 
 -behaviour(gen_server).
 
--include_lib("logging.hrl").
+-include_lib("../include/logging.hrl").
 -include_lib("eunit/include/eunit.hrl").
--include("enet_types.hrl").
+-include("../include/enet_types.hrl").
 
 %% API
 -export([start_link/2

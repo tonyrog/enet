@@ -9,7 +9,7 @@
 
 -behaviour(gen_server).
 
--include_lib("logging.hrl").
+-include_lib("../include/logging.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 %% API

@@ -16,7 +16,7 @@
 
 -compile(export_all).
 
--include("enet_types.hrl").
+-include("../include/enet_types.hrl").
 
 %%====================================================================
 %% API

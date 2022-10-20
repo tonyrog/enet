@@ -4,8 +4,8 @@
 %% @doc pcap file utils
 %% @end
 -module(enet_pcap_utils).
--include("enet_pcap.hrl").
--include("enet_types.hrl").
+-include("../include/enet_pcap.hrl").
+-include("../include/enet_types.hrl").
 
 -export([tcp_packet_array/1
          ,tcp_flows/1

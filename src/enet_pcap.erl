@@ -6,7 +6,7 @@
 -module(enet_pcap).
 
 -include_lib("kernel/include/file.hrl").
--include("enet_pcap.hrl").
+-include("../include/enet_pcap.hrl").
 
 -behavior(enet_codec).
 
@@ -219,15 +219,12 @@ ts_to_localtime(T) ->
 
 ts_to_now(#pcap_pkt{ts=Ts}) -> ts_to_now(Ts);
 ts_to_now({UnixTS, MicroSecs}) ->
-    {UnixTS div 1000000,
-     UnixTS rem 1000000,
-     MicroSecs}.
+    {UnixTS div 1000000, UnixTS rem 1000000, MicroSecs}.
 
 now_to_ts() ->
-    now_to_ts(erlang:now()).
-now_to_ts({Mega, Secs, Micros}) ->
-    {Mega * 1000000 + Secs,
-     Micros}.
+    now_to_ts(erlang:system_time(micro_seconds)).
+now_to_ts(SysTime) when is_integer(SysTime) ->
+    {SysTime div 1000000, SysTime rem 1000000}.
 
 unix_ts_to_datetime(Ts) when is_integer(Ts) ->
     Ts1970 = calendar:datetime_to_gregorian_seconds({{1970,1,1},{0,0,0}}),

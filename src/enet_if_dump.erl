@@ -20,8 +20,8 @@
 -export([init/1, handle_cast/2, handle_call/3, 
          handle_info/2, terminate/2, code_change/3]).
 
--include("enet_types.hrl").
--include_lib("logging.hrl").
+-include("../include/enet_types.hrl").
+-include_lib("../include/logging.hrl").
 
 -record(state, {print=[time, space, direction, space, packet, nl
                        ,{hexblock, frame}, nl
@@ -104,9 +104,9 @@ print(Info, #state{print=Format}) ->
     error_logger:info_msg(Fmt, Args).
 
 format(time, _Info, {Fmt, Args}) ->
-    {_,_,Mics} = erlang:now(),
+    Mics = erlang:system_time(micro_seconds),
     {_,{H, M, Secs}} = calendar:local_time(),
-    Micros = Mics div 1000,
+    Micros = Mics rem 1000,
     Seconds = Secs rem 60 + (Micros / 1000),
     {Fmt ++ "~p:~p:~p", Args ++ [H, M, Seconds]};
 format(space, _Info, {Fmt, Args}) ->

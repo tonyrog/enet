@@ -16,7 +16,7 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
--include("enet_types.hrl").
+-include("../include/enet_types.hrl").
 -define(TCP_HEADER_MIN_LEN, 20).
 -define(TCP_OPTS_ALIGNMENT, 4).
 
